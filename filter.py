@@ -20,28 +20,28 @@ def filter_user_data(postsURL, todosURL, usersURL):
     '''
 
     # make GET requests to appropriate URLs
-    response1 = requests.get(postsURL)
-    response2 = requests.get(todosURL)
-    response3 = requests.get(usersURL)
+    postResponse = requests.get(postsURL)
+    todoResponse = requests.get(todosURL)
+    userResponse = requests.get(usersURL)
 
     # validate response and check for errors
-    if response1.status_code == 200:
-        posts = json.loads(response1.text)
+    if postResponse.status_code == 200:
+        posts = json.loads(postResponse.text)
     else:
         sys.exit('Status Code {}. There was an error with the request.'
-                 .format(response1.status_code))
+                 .format(postResponse.status_code))
 
-    if response1.status_code == 200:
-        todos = json.loads(response2.text)
+    if postResponse.status_code == 200:
+        todos = json.loads(todoResponse.text)
     else:
         sys, exit('Status Code {}. There was an error with the request.'
-                  .format(response2.status_code))
+                  .format(todoResponse.status_code))
 
-    if response1.status_code == 200:
-        users = json.loads(response3.text)
+    if postResponse.status_code == 200:
+        users = json.loads(userResponse.text)
     else:
         sys.exit('Status Code {}. There was an error with the request.'
-                 .format(response3.status_code))
+                 .format(userResponse.status_code))
 
     # initialize dict to store data featuring each user
     outputDict = {}
